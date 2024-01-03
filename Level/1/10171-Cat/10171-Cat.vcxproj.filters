@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\kkj48\OneDrive\바탕 화면\BOJ-main\Level\1\10171-Cat.cpp">
+    <ClCompile Include="10171-Cat.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

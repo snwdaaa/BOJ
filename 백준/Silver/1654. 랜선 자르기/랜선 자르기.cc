@@ -7,7 +7,7 @@ using namespace std;
 // 전역 변수
 int k, n;
 vector<long long> cableLength; // 케이블 k개의 길이를 받을 벡터
-set<long long> result;
+vector<long long> result;
 
 // mid 길이로 몇 개의 길이가 같은 케이블을 만들 수 있는 지 확인
 int CheckCableCount(long long mid)
@@ -35,7 +35,7 @@ void BinarySearch(long long left, long long right)
     // 정확히 n개의 케이블을 만들 수 있거나 더 많이 만들 수 있는 길이를 셋에 저장
     if (cableCount >= n)
     {
-        result.insert(mid);
+        result.push_back(mid);
         BinarySearch(mid + 1, right); // 최대 길이를 구해야 하므로 가능한 한 계속 길이를 늘림
     }
     else

@@ -1,6 +1,6 @@
-// DFS 문제
-// 도화지에 있는 그림의 개수 -> DFS의 실행 횟수
-// 가장 큰 그림의 넓이 -> 각 DFS마다 큐에 들어갔다 나가는 좌표의 개수 중 최대값
+// BFS 문제
+// 도화지에 있는 그림의 개수 -> BFS의 실행 횟수
+// 가장 큰 그림의 넓이 -> 각 BFS마다 큐에 들어갔다 나가는 좌표의 개수 중 최대값
 
 #include <bits/stdc++.h>
 #define xPos first
@@ -14,9 +14,9 @@ int paint[501][501]; // 0번 인덱스 사용 X
 int cnt = 0; // 그림 개수
 int paintSize = 1; // 해당 그림의 넓이
 vector<int> paintSizes; // 모든 그림 넓이 저장
-queue<pair<int, int>> q; // DFS에서 방문한 칸 저장할 큐
+queue<pair<int, int>> q; // BFS에서 방문한 칸 저장할 큐
 
-void DFS(int x, int y)
+void BFS(int x, int y)
 {
 	while (!q.empty())
 	{
@@ -70,7 +70,7 @@ int main()
 				cnt++; // 그림 개수 + 1
 				paint[y][x] = 0; // 방문 처리
 				q.push(make_pair(x, y)); // 현재 방문한 점 큐에 추가
-				DFS(y, x);
+				BFS(y, x);
 				paintSizes.push_back(paintSize); // 해당 그림의 넓이 저장
 			}
 		}

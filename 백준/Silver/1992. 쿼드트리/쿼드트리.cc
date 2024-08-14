@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int matrix[4096][4096];
+char matrix[4096][4096];
 vector<char> result;
 
 void compress(int n, int x, int y) {
 	if (n == 1) {
-		result.push_back(char(matrix[y][x]) + '0');
+		result.push_back(matrix[y][x]);
 		return;
 	}
 
 	// 배열 전체 검사
 	bool isSame = true;
-	int startColor = matrix[y][x];
+	char startColor = matrix[y][x];
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (startColor != matrix[y + i][x + j]) { // 다른게 하나라도 나오면 영상을 한 번 더 나눠야 함
@@ -26,10 +26,10 @@ void compress(int n, int x, int y) {
 	if (!isSame) {
 		if (n == 2) { // 2x2에서도 0과 1이 섞여있으면 압축하지 않고 그대로 저장
 			result.push_back('(');
-			result.push_back(char(matrix[y][x]) + '0');
-			result.push_back(char(matrix[y][x + 1]) + '0');
-			result.push_back(char(matrix[y + 1][x]) + '0');
-			result.push_back(char(matrix[y + 1][x + 1]) + '0');
+			result.push_back(matrix[y][x]);
+			result.push_back(matrix[y][x + 1]);
+			result.push_back(matrix[y + 1][x]);
+			result.push_back(matrix[y + 1][x + 1]);
 			result.push_back(')');
 			return;
 		}
@@ -44,7 +44,7 @@ void compress(int n, int x, int y) {
 		}
 	}
 	else {
-		result.push_back(char(startColor) + '0');
+		result.push_back(startColor);
 	}	
 }
 
@@ -61,7 +61,7 @@ int main() {
 		getline(cin, line);
 
 		for (int j = 0; j < n; j++) {
-			matrix[i][j] = int(line.at(j)) - 48;
+			matrix[i][j] = line.at(j);
 		}
 	}
 

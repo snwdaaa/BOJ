@@ -1,25 +1,28 @@
 #include <string>
 #include <vector>
-#include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
 string solution(vector<string> participant, vector<string> completion) {
     string answer = "";
     
-    // 정렬 O(nlogn)
-    sort(participant.begin(), participant.end());
-    sort(completion.begin(), completion.end());
+    unordered_map<string, int> nameCnt;
     
-    auto pIt = participant.begin();
-    auto cIt = completion.begin();
-    while (cIt != completion.end())
+    // O(n)
+    for (auto it = participant.begin(); it != participant.end(); it++)
+        nameCnt[*it]++;
+    
+    // O(n)
+    for (auto it = completion.begin(); it != completion.end(); it++)
+        nameCnt[*it]--;
+    
+    // O(n)
+    for (auto it = nameCnt.begin(); it != nameCnt.end(); it++)
     {
-        if (*pIt != *cIt) break;
-        pIt++;
-        cIt++;
+        if (it->second == 1)
+            answer = it->first;
     }
-    answer = *pIt;
     
     return answer;
 }

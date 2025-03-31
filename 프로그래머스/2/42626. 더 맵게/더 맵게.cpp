@@ -1,9 +1,6 @@
-// O(nlogn) 이하
-
 #include <string>
 #include <vector>
 #include <queue>
-#include <numeric>
 
 using namespace std;
 
@@ -11,9 +8,8 @@ int solution(vector<int> scoville, int K) {
     int answer = 0;
     priority_queue<int, vector<int>, greater<int>> pq(scoville.begin(), scoville.end()); // O(n)
     
-    // 1. 모든 스코빌 지수가 K 이상인지 확인할 방법
-    //  => 최소 힙의 top 값이 K보다 큰지 확인
-    // 2. 스코빌 지수가 작은 두 음식을 섞어서 새로 집어넣을 방법
+    // 모든 스코빌 지수가 K 이상인지 확인할 방법
+    // => 최소 힙의 top 값이 K보다 큰지 확인
     
     // O(logn * logn)
     while (pq.top() < K)
